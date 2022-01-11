@@ -3,6 +3,7 @@ import '../css/signup.css';
 import { useState } from "react";
 // import {apiurl} from "../config.json";
 import {useHistory} from "react-router-dom";
+import {toast} from "react-toastify";
 const apiendpoint_signup = `${process.env.REACT_APP_API_URL}/user/signup`;
 // const apiendpoint_signup = "http://localhost:3001/user/signup";
 function Signup({setToken}){
@@ -54,6 +55,7 @@ function Signup({setToken}){
         .catch((error)=>{
           console.log('in error',error)
           error.text().then((data)=>{
+              toast(data)
               console.log(data)
           })
           history.replace('/signup')

@@ -13,6 +13,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import Home from './pages/home';
 import EditCandidate from './pages/editCandidate';
+import 'react-toastify/dist/ReactToastify.css';
+
+import {ToastContainer} from "react-toastify";
 function App() {
   const [token,setToken] = useState(sessionStorage.getItem('token'))
   // const hastoken = sessionStorage.getItem('token');
@@ -36,6 +39,7 @@ function App() {
         <ProtectedRoute path='/addcandidate' component={CreateCandidate} exact/>
         <ProtectedRoute path='/viewcandidate' component={ViewCandidate} exact/>
       </Switch>
+      <ToastContainer/>
       </main>
     </Router>
   );

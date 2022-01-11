@@ -2,6 +2,7 @@ import Input from "../components/input";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import '../css/login.css';
+import {toast} from "react-toastify";
 // import Loginn from 'ant-design-pro/lib/Login';
 // import { Alert, Checkbox } from 'antd';
 
@@ -54,7 +55,9 @@ function Login({setToken}) {
       })
       .catch((error) => {
         console.log("in error", error);
+        
         error.text().then((data) => {
+          toast(data)
           console.log(data);
         });
         history.replace("/login");
