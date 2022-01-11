@@ -1,10 +1,9 @@
 import Input from "../components/input";
 import { useState } from "react";
 import {useHistory} from "react-router-dom";
-import config from "../config.json";
-// const apiurl = config.apiurl;
 import '../css/createCandidate.css';
 import stateArray from "../states";
+import {toast} from "react-toastify";
 
 const apiendpoint = `${process.env.REACT_APP_API_URL}/candidate/addcandidate`;
 
@@ -18,8 +17,7 @@ function CreateCandidate(){
     const [email, setEmail] = useState('')
     const [result, setResult] = useState('')
     const history = useHistory()
-    // const stateArray = stateArray;
-    // console.log(apiurl);
+
 
     function handelcancel(){
       history.replace('/viewcandidate')
@@ -34,7 +32,6 @@ function CreateCandidate(){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          //make sure to serialize your JSON body
           body: JSON.stringify({
             email,name,address,age,result,pincode,state,dob
           })
@@ -50,24 +47,17 @@ function CreateCandidate(){
         })
         .then((value)=>{
           if(value){
-            // console.log(respo_json)
-            // setToken(respo_json)
-            // console.log(document.cookie)
-            // sessionStorage.setItem('token', value)?
-            // setLoggedin(true)
+       
             history.replace('/viewcandidate')
           }
           else{
-            // console.log('in else')
             history.replace('/viewcandidate')
           }
         })
         .catch((error)=>{
-          console.log('in error',error)
-          error.text().then((data)=>{
-              console.log(data)
-          })
-        //   history.replace('/candidate')
+          error.text().then((data) => {
+            toast(data)
+          });
     
         })
        
@@ -90,20 +80,20 @@ function CreateCandidate(){
             </div >
             <div className="form-input">
               <Input name="address" label="address" type="text" required placeholder="enter your address" onChange={(e)=>setAddress(e.target.value)}/>
-              {/* <Input list="stateList" name="state" label="state" type="text" required placeholder="enter your state" onChange={(e)=>setState(e.target.value)}/> */}
               <div className="stateInput">
               <label htmlFor={name} className="state-label">
                 State
               </label>
               <select onChange={(e)=>setState(e.target.value)} id="stateList">
+              <option className="selectPlaceholder" value="" selected disabled>Select your state</option>
                 {stateArray.map((state)=>{
-                  return <option value={state}>{state}</option>
+                  return <option key={state} value={state}>{state}</option>
                 })}
               </select>
                 </div>
             </div>
             <div className="form-input">
-              <Input name="pincode" label="pincode" type="text" required placeholder="enter your pincode" onChange={(e)=>setPincode(e.target.value)}/>
+              <Input name="pincode" label="pincode" type="text" required placeholder="enter your 6 digit pincode" onChange={(e)=>setPincode(e.target.value)}/>
               <Input name="result" label="result" type="text" required placeholder="enter your result" onChange={(e)=>setResult(e.target.value)}/>
             </div>
             <div className="form-button">

@@ -1,10 +1,10 @@
 import Input from "../components/input";
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import config from "../config.json";
 import stateArray from "../states";
+import {toast} from "react-toastify";
 
-// const apiurl = config.apiurl;
+
 
 const apiendpoint_getone = `${process.env.REACT_APP_API_URL}/candidate/getonecandidate`;
 const apiendpoint_udpate = `${process.env.REACT_APP_API_URL}/candidate/editCandidate`;
@@ -19,13 +19,10 @@ function EditCandidate() {
   const [state, setState] = useState("");
   const [email, setEmail] = useState("");
   const [result, setResult] = useState("");
-  // const [data,setData] = useState('')
   const history = useHistory();
-  // console.log(apiurl);
 
   useEffect(() => {
     async function verify() {
-      // e.preventDefault();
       await fetch(apiendpoint_getone, {
         method: "post",
         headers: {
@@ -33,7 +30,6 @@ function EditCandidate() {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        //make sure to serialize your JSON body
         body: JSON.stringify({
           id,
         }),
@@ -56,11 +52,9 @@ function EditCandidate() {
           setResult(value.result);
         })
         .catch((error) => {
-          console.log("in error", error);
           error.text().then((data) => {
-            console.log(data);
+            toast(data)
           });
-          //   history.replace('/candidate')
         });
     }
     verify();
@@ -79,7 +73,6 @@ function EditCandidate() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      //make sure to serialize your JSON body
       body: JSON.stringify({
         id,
         email,
@@ -101,23 +94,17 @@ function EditCandidate() {
       })
       .then((value) => {
         if (value) {
-          // console.log(respo_json)
-          // setToken(respo_json)
-          // console.log(document.cookie)
-          // sessionStorage.setItem('token', value)?
-          // setLoggedin(true)
+
           history.replace("/viewcandidate");
         } else {
-          // console.log('in else')
           history.replace("/viewcandidate");
         }
       })
       .catch((error) => {
-        console.log("in error", error);
         error.text().then((data) => {
-          console.log(data);
+          toast(data)
         });
-          history.replace('/viewcandidate')
+          // history.replace('/viewcandidate')
       });
   }
 
@@ -185,8 +172,9 @@ function EditCandidate() {
                 State
               </label>
               <select onChange={(e)=>setState(e.target.value)} id="stateList">
+              <option className="selectPlaceholder" value={state} selected disabled>{state}</option>
                 {stateArray.map((state)=>{
-                  return <option value={state}>{state}</option>
+                  return <option key={state} value={state}>{state}</option>
                 })}
               </select>
                 </div>
@@ -198,7 +186,7 @@ function EditCandidate() {
           type="text"
           value={pincode}
           required
-          placeholder="enter your pincode"
+          placeholder="enter your 6 digit pincode"
           onChange={(e) => setPincode(e.target.value)}
         />
         

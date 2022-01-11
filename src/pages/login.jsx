@@ -3,10 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import '../css/login.css';
 import {toast} from "react-toastify";
-// import Loginn from 'ant-design-pro/lib/Login';
-// import { Alert, Checkbox } from 'antd';
 
-// const { Tab, UserName, Password, Mobile, Captcha, Submit } = Loginn;
 
 const apiendpoint_login = `${process.env.REACT_APP_API_URL}/user/login`;
 function Login({setToken}) {
@@ -23,7 +20,6 @@ function Login({setToken}) {
         "Accept": "application/json",
         "Content-Type": "application/json",
       },
-      //make sure to serialize your JSON body
       body: JSON.stringify({
         email,
         password,
@@ -32,7 +28,6 @@ function Login({setToken}) {
       .then((response) => {
 
         if (response.status===200) {
-            // console.log(response.headers.get("x-auth-token"))
           sessionStorage.setItem("token", response.headers.get("x-auth-token"));
           setToken(response.headers.get('x-auth-token'));
           return response.text();
@@ -42,23 +37,16 @@ function Login({setToken}) {
       })
       .then((value) => {
         if (value) {
-          // console.log(respo_json)
-          // setToken(respo_json)
-          // console.log(document.cookie)
-          // sessionStorage.setItem('token', value)?
-          // setLoggedin(true)
+    
           history.push("/viewcandidate");
         } else {
-          // console.log('in else')
           history.replace("/login");
         }
       })
       .catch((error) => {
-        console.log("in error", error);
         
         error.text().then((data) => {
           toast(data)
-          console.log(data);
         });
         history.replace("/login");
       });

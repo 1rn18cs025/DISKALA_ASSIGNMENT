@@ -3,11 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 import {useHistory} from "react-router-dom";
 
 const NavBar = ({ token,setToken }) => {
-    // const history = useHistory()
-    // useEffect(()=>{
-    //     history.replace("/viewcandidate")
-    // },[sessionStorage.getItem('token')])
-
     function handleLogout(){
         sessionStorage.removeItem('token');
         setToken(null);
@@ -15,7 +10,7 @@ const NavBar = ({ token,setToken }) => {
     }
   return (
     <nav className="diskala-nav">
-        <Link to='/viewCandidate'className="navbar-brand">
+        <Link to='/viewCandidate' className="navbar-brand">
           DISKALA
         </Link>
         <div id="navbarNav">

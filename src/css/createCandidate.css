@@ -106,6 +106,12 @@
     height:42px ;
     border: 1px solid rgb(211, 211, 211);
     margin-left:  0px; ;
+    font-weight:lighter;
+    font-style: normal;
+    font-size: medium;
+    color: rgb(98, 96, 100);
+    text-indent: 2px;
+
     /* -moz-box-sizing: border-box; */
     /* -webkit-box-sizing: border-box; */
     /* box-sizing: border-box; */

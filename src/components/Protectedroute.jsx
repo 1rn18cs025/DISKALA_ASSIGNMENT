@@ -3,7 +3,6 @@ import { Redirect, Route } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, ...restOfProps }) {
   const hasToken = sessionStorage.getItem("token");
-  // console.log(", );?
 
   return (
     <Route

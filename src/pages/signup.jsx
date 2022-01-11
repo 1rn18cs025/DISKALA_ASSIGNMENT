@@ -1,11 +1,9 @@
 import Input from "../components/input";
 import '../css/signup.css';
 import { useState } from "react";
-// import {apiurl} from "../config.json";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
 const apiendpoint_signup = `${process.env.REACT_APP_API_URL}/user/signup`;
-// const apiendpoint_signup = "http://localhost:3001/user/signup";
 function Signup({setToken}){
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -20,7 +18,6 @@ function Signup({setToken}){
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          //make sure to serialize your JSON body
           body: JSON.stringify({
             email,
             password,
@@ -40,23 +37,16 @@ function Signup({setToken}){
         })
         .then((value)=>{
           if(value){
-            // console.log(respo_json)
-            // setToken(respo_json)
-            // console.log(document.cookie)
-            // sessionStorage.setItem('token', value)?
-            // setLoggedin(true)
+
             history.replace('/viewcandidate')
           }
           else{
-            // console.log('in else')
             history.replace('/signup')
           }
         })
         .catch((error)=>{
-          console.log('in error',error)
           error.text().then((data)=>{
               toast(data)
-              console.log(data)
           })
           history.replace('/signup')
     
