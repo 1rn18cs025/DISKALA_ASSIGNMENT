@@ -1,0 +1,50 @@
+body {
+    background-color: white
+}
+.task-wrapper {
+    background: white;
+    margin-top: 40px;
+    width: 80vw;
+}
+table {
+    padding-bottom: 15px;
+    width: 100%;
+    border: none;
+    margin-bottom: 10px;
+    /* background-color: white; */
+}
+table td, table th {
+    padding: 8px;
+    border: none;
+}
+thead {
+    border: none;
+}
+table tr:nth-child(even) {
+    background-color: #F5FBFF;
+    color: black;
+}
+table tr{
+    border: none;
+}
+tbody {
+    border: none;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    /* background-color: #0041a3; */
+    font-weight: normal;
+    text-transform: capitalize;
+    color: rgb(148, 147, 147);
+}
+
+.add_cand {
+    text-decoration: none;
+    color: skyblue;
+}
+.listLength {
+    margin-top: 10px;
+}

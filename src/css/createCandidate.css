@@ -1,0 +1,112 @@
+.form-container {
+    background: white;
+    padding: 30px 60px;
+    border-radius: 5px;
+    margin-top: 80px;
+    max-width: 1200px;
+    height: 500px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+    display: grid;
+    width: 800px;
+    /* place-items: center; */
+  }
+  
+  .form-container h3 {
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .form-inputs-email {
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 15px;
+    
+  }
+  .form-inputs input {
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 0px;
+    width: 250px;
+    /* margin-top: 20px; */
+    
+  }
+  .form-inputs span {
+    color: #45B2EE;
+    font-size: x-small;
+    text-align: end;
+    margin-top: -20px;
+    
+  }
+
+  
+  .form-inputs button {
+    border: none;
+    background: #45B2EE;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 30px;
+    align-self: center;
+    margin-top: 20px;
+  }
+  
+  .form-inputs {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+    font-size: small;
+    text-transform: capitalize;
+    
+  }
+  .form-input {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 120px;
+  }
+  .form-button {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 50px;
+    margin-right: 60px;
+    
+  }
+  .form-label{
+    font-weight:bolder ;
+    margin-bottom: 0;
+  }
+
+  #cancelbutton{
+      color: #45B2EE ;
+      box-shadow: rgb(238, 173, 130);
+      border: 1px solid #45B2EE ;
+      /* border:; */
+      background: none;
+
+
+  }
+  .stateInput{
+      display: flex;
+      flex-direction: column;
+      margin-top: -2px;
+      /* gap: 10px; */
+  }
+  .stateInput label{
+    font-weight: bold;
+    /* gap: 10px; */
+}
+  .stateInput select{
+      
+    width: 251px;
+    border-radius: 5px;
+    height:42px ;
+    border: 1px solid rgb(211, 211, 211);
+    margin-left:  0px; ;
+    /* -moz-box-sizing: border-box; */
+    /* -webkit-box-sizing: border-box; */
+    /* box-sizing: border-box; */
+}
